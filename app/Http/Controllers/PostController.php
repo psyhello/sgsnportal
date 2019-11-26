@@ -10,7 +10,7 @@ class PostController extends Controller
 {
      	public function index()
   	{
-  		$posts = Post::simplePaginate(3); 
+  		$posts = Post::Paginate(3); 
 
   		
   		return view ('Posts.index', compact('posts'));

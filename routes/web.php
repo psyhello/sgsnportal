@@ -12,12 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	
+    return view('welcome',[
+    	'post' => App\Post::latest('id')->first()
+    ]);
 });
 
 Route::get('/news','PostController@index');
 
 Route::get('/news/create','PostController@create');
+
+Route::get('/news/{news}/edit', 'PostController@update');
 
 Route::post('/news','PostController@store');
 
