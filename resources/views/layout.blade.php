@@ -32,6 +32,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/news" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Новости</a>
               <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <a class="dropdown-item" href="/news">Все Новости</a>
                 <a class="dropdown-item" href="/news/create">Создать Новость</a>
                 </div>
             </li>
@@ -57,13 +58,7 @@
       </nav>
       </header>
 
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">{{$post->title}}</h1>
-          <p>{{$post->description}}</p>
-          <p><a class="btn btn-primary btn-lg" href="/news/{{$post->id}}" role="button">Подробнее »</a></p>
-        </div>
-      </div>
+
 
       @yield('content')
 </body>

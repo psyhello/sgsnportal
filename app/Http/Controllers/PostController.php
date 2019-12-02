@@ -11,29 +11,55 @@ class PostController extends Controller
      	public function index()
   	{
   		$posts = Post::Paginate(3); 
-
+      $lastpost = Post::latest('id')->first();
   		
-  		return view ('Posts.index', compact('posts'));
+  		return view ('Posts.index', compact('posts','lastpost'));
   	}
 
      	public function create()
   	{
 
-  		
   		return view ('Posts.create');
   	}
 
+
      	public function store()
   	{
-  		return Request()->all();
+        Post::create($this->validateForm());
+
+        return redirect('/news');
   	}
-
-
   	
   	public function show($id)
   	{
-  		$post = Post::find($id);
+      $post = Post::FindOrFail($id);
 
-  		return view ('Posts.show',compact('post'));
+      $lastpost = Post::latest('id')->first();
+
+  		return view ('Posts.show',compact('post','lastpost'));
   	}
+    public function edit($id)
+    {
+      
+     $post = Post::FindOrFail($id);
+
+      return view('Posts.edit',compact('post'));
+    }
+
+    public function update($id)
+    {
+
+     $post = Post::FindOrFail($id);
+
+     $post->update($this->validateForm());
+
+     return redirect('/news/'. $post->id);
+
+    }
+
+    protected function validateForm()
+     {
+       return request()->validate(['title'=> 'required','description'=>'required','text'=>'required']);
+     }
+
 }

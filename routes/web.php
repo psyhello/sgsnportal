@@ -22,8 +22,12 @@ Route::get('/news','PostController@index');
 
 Route::get('/news/create','PostController@create');
 
-Route::get('/news/{news}/edit', 'PostController@update');
-
 Route::post('/news','PostController@store');
 
 Route::get('/news/{news}','PostController@show');
+
+Route::get('/news/{news}/edit', 'PostController@edit');
+
+Route::put('/news/{news}', 'PostController@update');
+
+
