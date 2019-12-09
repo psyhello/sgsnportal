@@ -14,7 +14,8 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        //
+        $issues = Issue::all()->get();
+        return view('Issues.index',compact('issues'));
     }
 
     /**
@@ -24,7 +25,7 @@ class IssuesController extends Controller
      */
     public function create()
     {
-        //
+        return view('Issues.create');
     }
 
     /**
@@ -35,7 +36,9 @@ class IssuesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Issue::create($this->validateForm());
+
+        return redirect('/issues');
     }
 
     /**
@@ -46,7 +49,9 @@ class IssuesController extends Controller
      */
     public function show(Issue $issue)
     {
-        //
+        $issue = Issue::FindOrFail($issue);
+
+        return view('Issues.show',compact('issue'));
     }
 
     /**
@@ -57,7 +62,9 @@ class IssuesController extends Controller
      */
     public function edit(Issue $issue)
     {
-        //
+        $issue = Issue::FindOrFail($issue);
+
+        return view('Issues.edit',compact('issue'));
     }
 
     /**
@@ -69,7 +76,11 @@ class IssuesController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        //
+        $issue= FindOrFail($issue);
+
+        Issue::update($this->validateForm());
+
+        return redirect('/issues'. $issue->id);
     }
 
     /**
@@ -82,4 +93,15 @@ class IssuesController extends Controller
     {
         //
     }
+     /**
+     * Validates form for Issue
+     *
+     * @param  Form request
+     * @return \Illuminate\Http\Response
+     */
+
+    protected function validateForm()
+     {
+       return request()->validate(['title'=> 'required','description'=>'required','text'=>'required']);
+     }
 }

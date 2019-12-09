@@ -17,9 +17,13 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample09">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Подать заявку</a>
-            </li>            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/issues" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Заявки</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <a class="dropdown-item" href="/issues">Все Заявки</a>
+                <a class="dropdown-item" href="/issues/create">Создать Заявку</a>
+                </div>
+            </li>           
             <li class="nav-item">
               <a class="nav-link" href="#">Журнал учёта ошибок</a>
             </li>            
