@@ -30,4 +30,6 @@ Route::get('/news/{news}/edit', 'PostController@edit');
 
 Route::put('/news/{news}', 'PostController@update');
 
-Route::get('/issues', 'IssuesController@index;');
+Route::get('/issues', 'IssuesController@index')->name('issues.show');
+
+Route::get('/issues/create', 'IssuesController@create');
