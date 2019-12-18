@@ -17,6 +17,12 @@
 	<hr>
 	<button class="btn btn-primary btn-block" type="submit">Сохранить Новость</button>
 </form>
+</br>
+<form method="POST" action="/news/{{$post->id}}">
+	@csrf
+	@method('DELETE')
+	<button class="btn btn-primary btn-block" type="submit">Удалить новость</button>
+</form>
 
 
   </div>

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    public function dept()
+	protected $fillable = ['name'];
+	
+    public function Dept()
     {
     	return $this->hasMany(Dept::class);
     }

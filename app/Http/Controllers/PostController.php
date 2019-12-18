@@ -94,7 +94,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post=Post::FindOrFail($id);
+
+        $post->delete();
+
+        return redirect('/news');
     }
         /**
      * Validates the data from requested form.

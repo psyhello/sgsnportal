@@ -18,6 +18,9 @@ Route::get('/', function () {
     ]);
 });
 
+
+//News
+
 Route::get('/news','PostController@index');
 
 Route::get('/news/create','PostController@create');
@@ -30,6 +33,27 @@ Route::get('/news/{news}/edit', 'PostController@edit');
 
 Route::put('/news/{news}', 'PostController@update');
 
+Route::delete('news/{news}','PostController@destroy');
+
+
+//Issues
 Route::get('/issues', 'IssuesController@index')->name('issues.show');
 
 Route::get('/issues/create', 'IssuesController@create');
+
+
+
+
+//Companies
+Route::get('/company','CompanyController@index');
+
+Route::get('/company/create', 'CompanyController@create');
+
+Route::post('/company', 'CompanyController@store');
+
+Route::get('/company/{company}','CompanyController@show');
+
+Route::get('/company/{company}/edit','CompanyController@edit');
+
+Route::put('/company/{company}','CompanyController@update');
+

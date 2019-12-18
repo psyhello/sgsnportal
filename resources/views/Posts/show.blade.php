@@ -16,5 +16,7 @@
       </div>
   </div>
   <div class="row"><a class="btn btn-primary btn-lg" href="/news/{{$post->id}}/edit" role="button">Изменить новость</a></div>
+  
+
   </div>
 @endsection
