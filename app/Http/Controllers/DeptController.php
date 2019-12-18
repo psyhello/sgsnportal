@@ -116,7 +116,7 @@ class DeptController extends Controller
        public function valideteForm()
    {
 
-    return request()->validate(['name'=>'required']);
+    return request()->validate(['name'=>'required','parentid'=>'required']);
 
    }
 }

@@ -12,8 +12,8 @@
 	<label for="name">Введите название Отдела</label>
 	<input type="text" name="name" id="name" class="form-control">
 		@if (count($parent) != NULL)
-		<label for="parent">Выберете Родительский Отдел</label>
-		<select name="parent" id="parent" class="form-control" required>
+		<label for="parentid">Выберете Родительский Отдел</label>
+		<select name="parentid" id="parentid" class="form-control" required>
 			<option value=""></option>
 			@foreach ($parent as $parent)
 			<option value="{{$parent->id}}">{{$parent->name}}</option>
