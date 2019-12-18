@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dept;
 use Illuminate\Http\Request;
+use App\Company;
 
 class DeptController extends Controller
 {
@@ -14,7 +15,11 @@ class DeptController extends Controller
      */
     public function index()
     {
-        //
+
+    $Depts = Dept::Paginate(3);
+
+    return view('Depts.index',compact('Depts'));
+
     }
 
     /**
@@ -24,7 +29,10 @@ class DeptController extends Controller
      */
     public function create()
     {
-        //
+        $parent = Dept::get()->all();
+    return view('Depts.create',compact('parent'));
+   
+
     }
 
     /**
@@ -35,7 +43,10 @@ class DeptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+    Dept::Create($this->valideteForm());
+
+    return redirect('/depts');
     }
 
     /**
@@ -46,7 +57,11 @@ class DeptController extends Controller
      */
     public function show(Dept $dept)
     {
-        //
+
+    $cur_dept = Dept::FindOrFail($dept->id);
+
+    return view('Depts.show',compact('cur_dept'));
+
     }
 
     /**
@@ -57,7 +72,11 @@ class DeptController extends Controller
      */
     public function edit(Dept $dept)
     {
-        //
+
+    $cur_dept = Dept::FindOrFail($dept->id);
+
+    return view('Depts.edit',compact('cur_dept'));
+
     }
 
     /**
@@ -69,7 +88,13 @@ class DeptController extends Controller
      */
     public function update(Request $request, Dept $dept)
     {
-        //
+
+    $cur_dept = Dept::FindOrFail($dept->id);
+
+    $cur_dept->update($this->valideteForm());
+
+    return redirect('/dept/'.$cur_dept->id);
+
     }
 
     /**
@@ -80,6 +105,18 @@ class DeptController extends Controller
      */
     public function destroy(Dept $dept)
     {
-        //
+
+    $cur_dept = Dept::FindOrFail($dept->id);
+
+    $cur_dept->update($this->valideteForm());
+
+    return redirect('/Dept/'.$dept->id);
     }
+
+       public function valideteForm()
+   {
+
+    return request()->validate(['name'=>'required']);
+
+   }
 }

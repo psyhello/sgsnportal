@@ -57,3 +57,7 @@ Route::get('/company/{company}/edit','CompanyController@edit');
 
 Route::put('/company/{company}','CompanyController@update');
 
+//Depts
+
+Route::resource('depts', 'DeptController');
+
