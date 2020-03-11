@@ -12,12 +12,12 @@
 <div class="row">
 	@foreach ($issues as $issue)
       <div class="col-md-4">
-        <h2>{{$issue->title}}</h2>
-        <p>{{$post->description}} </p>
+        <h2>{{$issue->id}}</h2>
+        <p>{{$issue->description}} </p>
         <p><a class="btn btn-secondary" href="{{route('issues.show',$issue->id)}}" role="button">Подробнее »</a></p>
       </div>
       @endforeach
   </div>
-  <div class="row">{{$posts->links()}}</div>
+  <div class="row">{{$issues->links()}}</div>
   </div>
 @endsection

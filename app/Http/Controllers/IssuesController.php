@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Issue;
 use Illuminate\Http\Request;
+use App\Post;
 
 class IssuesController extends Controller
 {
@@ -14,8 +15,9 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all()->get();
-        return view('Issues.index',compact('issues'));
+        $lastpost = Post::latest('id')->first();
+        $issues = Issue::Paginate(5);
+        return view('Issues.index',compact('issues','lastpost'));
     }
 
     /**
@@ -102,6 +104,6 @@ class IssuesController extends Controller
 
     protected function validateForm()
      {
-       return request()->validate(['title'=> 'required','description'=>'required','text'=>'required']);
+       return request()->validate(['description'=>'required']);
      }
 }
