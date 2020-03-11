@@ -51,9 +51,11 @@ class IssuesController extends Controller
      */
     public function show(Issue $issue)
     {
-        $issue = Issue::FindOrFail($issue);
+        $lastpost = Post::latest('id')->first();
 
-        return view('Issues.show',compact('issue'));
+        $issue = Issue::FindOrFail($issue)->first();
+
+        return view('Issues.show',compact('issue','lastpost'));
     }
 
     /**

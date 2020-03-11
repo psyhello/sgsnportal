@@ -11,10 +11,9 @@
 <div class="container">
 <div class="row">
       <div class="col-md-4">
-        <h2>{{$post->title}}</h2>
-        <p>{{$post->text}} </p>
+        <p>{{$issue->description}} </p>
       </div>
   </div>
-  <div class="row"><a class="btn btn-primary btn-lg" href="/news/{{$post->id}}/edit" role="button">Изменить новость</a></div>
+  <div class="row"><a class="btn btn-primary btn-lg" href="/issues/{{$issue->id}}/edit" role="button">Изменить Заявку</a></div>
   </div>
 @endsection

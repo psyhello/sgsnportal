@@ -10,13 +10,29 @@
       </div>
 <div class="container">
 <div class="row">
-	@foreach ($issues as $issue)
-      <div class="col-md-4">
-        <h2>{{$issue->id}}</h2>
-        <p>{{$issue->description}} </p>
-        <p><a class="btn btn-secondary" href="{{route('issues.show',$issue->id)}}" role="button">Подробнее »</a></p>
-      </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID Заявки</th>
+        <th scope="col">Тип заявки</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Пользователь</th>
+        <th scope="col">Действие</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($issues as $issue)
+      <tr>
+        <th scope="row">{{$issue->id}}</th>
+        <td>{{$issue->type}}</td>
+        <td>{{$issue->description}}</td>
+        <td>{{$issue->user_id}}</td>
+        <td><a class="btn btn-secondary" href="{{route('issues.show',$issue->id)}}" role="button">Подробнее »</a></td>
+      </tr>
       @endforeach
+    </tbody>
+  </table>
+	
   </div>
   <div class="row">{{$issues->links()}}</div>
   </div>
