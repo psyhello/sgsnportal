@@ -118,7 +118,7 @@ class IssuesController extends Controller
 
          $fin = DB::table('issues')->where('id',$curId)->update(['state' => 1]);
 
-         return redirect('/issues/' . $issue->id);
+         return redirect('/issues');
 
      }
 }

@@ -39,7 +39,11 @@
           <form action="/issues/{{$issue->id}}/finish" method="POST">
           @csrf
           @method('PUT')
+           @if ( $issue->state == 0)
           <button class="btn btn-primary btn-block" type="submit">Завершить »</button>
+          @elseif ( $issue->state == 1)
+          <button class="btn btn-primary btn-block" onclick="alert('Заявка уже завершена'); return false;">Завершить »</button>
+          @endif
           </form>
         </td>
       </tr>
