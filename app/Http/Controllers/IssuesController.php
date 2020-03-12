@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Issue;
 use Illuminate\Http\Request;
 use App\Post;
+use DB;
 
 class IssuesController extends Controller
 {
@@ -107,5 +108,17 @@ class IssuesController extends Controller
     protected function validateForm()
      {
        return request()->validate(['description'=>'required']);
+     }
+
+     public function finish(Request $request, Issue $issue)
+     {
+         $curIs= Issue::FindOrFail($issue)->first();
+
+        $curId = $curIs->id;
+
+         $fin = DB::table('issues')->where('id',$curId)->update(['state' => 1]);
+
+         return redirect('/issues/' . $issue->id);
+
      }
 }

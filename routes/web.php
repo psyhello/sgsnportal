@@ -41,6 +41,8 @@ Route::get('/issues', 'IssuesController@index')->name('issues.show');
 
 Route::get('/issues/create', 'IssuesController@create');
 
+Route::put('/issues/{issue}/finish','IssuesController@finish');
+
 Route::resource('issues','IssuesController');
 
 

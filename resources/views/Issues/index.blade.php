@@ -15,19 +15,33 @@
       <tr>
         <th scope="col">ID Заявки</th>
         <th scope="col">Тип заявки</th>
+        <th scope="col">Статус</th>
         <th scope="col">Описание</th>
         <th scope="col">Пользователь</th>
-        <th scope="col">Действие</th>
+        <th scope="col-md-2">Действие</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($issues as $issue)
       <tr>
-        <th scope="row">{{$issue->id}}</th>
-        <td>{{$issue->type}}</td>
+        <th scope="row"> {{$issue->id}} </th>
+        <td> {{$issue->type}} </td>
+          @if ( $issue->state == 0)
+          <td>В работе</td>
+          @elseif ( $issue->state == 1)
+          <td>Завершено</td>
+          @endif
         <td>{{$issue->description}}</td>
         <td>{{$issue->user_id}}</td>
         <td><a class="btn btn-secondary" href="{{route('issues.show',$issue->id)}}" role="button">Подробнее »</a></td>
+
+        <td>
+          <form action="/issues/{{$issue->id}}/finish" method="POST">
+          @csrf
+          @method('PUT')
+          <button class="btn btn-primary btn-block" type="submit">Завершить »</button>
+          </form>
+        </td>
       </tr>
       @endforeach
     </tbody>
