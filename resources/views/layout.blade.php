@@ -60,7 +60,15 @@
                 <a class="dropdown-item" href="#">Мои заявки</a>
                 <a class="dropdown-item" href="/home">Информация</a>
                 @if (Auth::check())
-                <a class="dropdown-item" href="/logout">Выйти из системы</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Выйти из системы') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                 @else
                 <a class="dropdown-item" href="/login">Войти в систему</a>
                 @endif

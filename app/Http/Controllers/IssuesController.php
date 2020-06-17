@@ -29,7 +29,13 @@ class IssuesController extends Controller
      */
     public function create()
     {
-        return view('Issues.create');
+        if (Auth::check()) {
+            return view('Issues.create');
+        }
+        else{
+            return view('auth.login');
+        }
+        
     }
 
     /**
