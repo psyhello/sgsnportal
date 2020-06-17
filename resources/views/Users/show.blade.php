@@ -11,11 +11,12 @@
 <div class="container">
 <div class="row">
       <div class="col-md-4">
-        <p>{{$issue->description}} </p>
+        <h2>{{$user->name}}</h2>
+        <p>{{$user->email}} </p>
       </div>
   </div>
-  @if (Auth::id() == $issue->user_id)
-  <div class="row"><a class="btn btn-primary btn-lg" href="/issues/{{$issue->id}}/edit" role="button">Изменить Заявку</a></div>
-  @endif
+  <div class="row"><a class="btn btn-primary btn-lg" href="/users/{{$user->id}}/edit" role="button">Изменить пользователя</a></div>
+  
+
   </div>
 @endsection

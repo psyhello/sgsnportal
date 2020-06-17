@@ -62,6 +62,7 @@ Route::put('/company/{company}','CompanyController@update');
 //Depts
 
 Route::resource('depts', 'DeptController');
+Route::resource('users', 'ProfileController');
 
 
 Auth::routes();

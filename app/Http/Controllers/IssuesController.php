@@ -75,7 +75,7 @@ class IssuesController extends Controller
      */
     public function edit(Issue $issue)
     {
-        $issue = Issue::FindOrFail($issue);
+        $issue = Issue::FindOrFail($issue)->first();
 
         return view('Issues.edit',compact('issue'));
     }
@@ -89,11 +89,11 @@ class IssuesController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        $issue= FindOrFail($issue);
+        $issue= Issue::FindOrFail($issue)->first();
 
-        Issue::update($this->validateForm());
+        $issue->update($this->validateForm());
 
-        return redirect('/issues'. $issue->id);
+        return redirect('/issues/'. $issue->id);
     }
 
     /**
