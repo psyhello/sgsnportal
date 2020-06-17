@@ -54,7 +54,22 @@
                 <a class="dropdown-item" href="#">Работа в ЕИС Стройформ</a>
               </div>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Профиль</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <a class="dropdown-item" href="#">Мои заявки</a>
+                <a class="dropdown-item" href="/home">Информация</a>
+                @if (Auth::check())
+                <a class="dropdown-item" href="/logout">Выйти из системы</a>
+                @else
+                <a class="dropdown-item" href="/login">Войти в систему</a>
+                @endif
+              </div>
+            </li>
           </ul>
+          
+
+
           <form class="form-inline my-2 my-md-0">
             <input class="form-control" type="text" placeholder="Поиск по сайту" aria-label="Search">
           </form>

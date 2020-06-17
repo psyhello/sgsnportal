@@ -8,5 +8,12 @@
           <p><a class="btn btn-primary btn-lg" href="/news/{{$post->id}}" role="button">Подробнее »</a></p>
         </div>
       </div>
-Привет, это главная страница!
+
+@if (Auth::check())
+Привет, 
+{{Auth::User()->name}}
+@else
+Пожалуйста залогиньтесь.
+
+@endif
 @endsection

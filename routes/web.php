@@ -63,3 +63,7 @@ Route::put('/company/{company}','CompanyController@update');
 
 Route::resource('depts', 'DeptController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

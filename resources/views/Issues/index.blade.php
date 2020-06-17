@@ -55,3 +55,4 @@
   <div class="row">{{$issues->links()}}</div>
   </div>
 @endsection
+

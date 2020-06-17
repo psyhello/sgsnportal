@@ -6,6 +6,7 @@ use App\Issue;
 use Illuminate\Http\Request;
 use App\Post;
 use DB;
+use Auth;
 
 class IssuesController extends Controller
 {
@@ -39,7 +40,8 @@ class IssuesController extends Controller
      */
     public function store(Request $request)
     {
-        Issue::create($this->validateForm());
+        $user = Auth::id();
+        Issue::create($this->validateForm(),$user);
 
         return redirect('/issues');
     }
@@ -107,7 +109,7 @@ class IssuesController extends Controller
 
     protected function validateForm()
      {
-       return request()->validate(['description'=>'required']);
+       return request()->validate(['description'=>'required','user_id'=>'required']);
      }
 
      public function finish(Request $request, Issue $issue)
