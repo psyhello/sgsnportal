@@ -96,16 +96,22 @@
               e.classList.add("d-none");
             } 
         }
-/*
+
         function chooseType() {
-          if(document.getElementById("type").val ==2){
+
+          let vid = document.getElementById("vid");
+          console.log (vid.value);
+          if (vid.value == 1) {
+            vid.createElement("option");
+            vid.appendChild( vid.createTextNode('азаза') );
+          }
+         /* if(document.getElementById("type").val ==2){
             let vidOfType = document.getElementById("vid");
             let vidOfType = document.createElement("option");
             vidOfType.appendChild( document.createTextNode('азаза') );
-          }
+          }*/
         }
 
-*/
       </script>
 </body>
 </html>
