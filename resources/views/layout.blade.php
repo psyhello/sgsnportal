@@ -88,5 +88,24 @@
 
 
       @yield('content')
+      <script>
+        function showDiv(e) {
+            if (e.classList.contains("d-none")){
+              e.classList.remove("d-none");
+            }else{
+              e.classList.add("d-none");
+            } 
+        }
+/*
+        function chooseType() {
+          if(document.getElementById("type").val ==2){
+            let vidOfType = document.getElementById("vid");
+            let vidOfType = document.createElement("option");
+            vidOfType.appendChild( document.createTextNode('азаза') );
+          }
+        }
+
+*/
+      </script>
 </body>
 </html>
