@@ -32,7 +32,7 @@
           <td>Завершено</td>
           @endif
         <td>{{$issue->description}}</td>
-        <td>{{$issue->user->name}}</td>
+        <td><a href="#"  onclick="userInfo({{$issue->user->id}})">{{$issue->user->name}}</a></td>
         <td><a class="btn btn-secondary" href="{{route('issues.show',$issue->id)}}" role="button">Подробнее »</a></td>
 
         <td>
@@ -54,5 +54,11 @@
   </div>
   <div class="row">{{$issues->links()}}</div>
   </div>
+  <script>        
+    function userInfo(e) {
+      event.preventDefaults();
+          alert('{{$issue->user->name }}  ');
+        }
+  </script>
 @endsection
 

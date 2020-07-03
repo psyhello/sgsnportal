@@ -57,8 +57,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Профиль</a>
               <div class="dropdown-menu" aria-labelledby="dropdown09">
-                <a class="dropdown-item" href="#">Мои заявки</a>
-                <a class="dropdown-item" href="/home">Информация</a>
+                <a class="dropdown-item" href="/users/{{Auth::id()}}">Мои заявки</a>
                 @if (Auth::check())
                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -97,19 +96,25 @@
             } 
         }
 
-        function chooseType() {
+        function chooseType(e) {
 
           let vid = document.getElementById("vid");
           console.log (vid.value);
-          if (vid.value == 1) {
-            vid.createElement("option");
-            vid.appendChild( vid.createTextNode('азаза') );
+          if (vid.value == 2) {
+            //console.log(vid);
+          
+            let opt = document.createElement("option");
+            let newoption = document.createTextNode('азаза');
+            opt.appendChild(newoption);
           }
          /* if(document.getElementById("type").val ==2){
             let vidOfType = document.getElementById("vid");
             let vidOfType = document.createElement("option");
             vidOfType.appendChild( document.createTextNode('азаза') );
           }*/
+        }
+        function userInfo(e) {
+          alert('{{$issue->user->name ?? ''}}  ');
         }
 
       </script>

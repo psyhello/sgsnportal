@@ -16,7 +16,7 @@
 				<form method="POST" action="/issues">
 					{{ csrf_field() }}
 					<div><label for="type">Выберите тип проблемы</label></br>
-						<select name="type" id="type" onchange="chooseType()">
+						<select name="type" id="type" onchange="chooseType(it)">
 						<option value="1" >
 							Общие заявки
 						</option>

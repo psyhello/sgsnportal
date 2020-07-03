@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Post;
+use App\Issue;
+use Auth;   
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -40,8 +42,12 @@ class ProfileController extends Controller
 
         $user = User::FindOrFail($id);
 
+        
 
-        return view('Users.show',compact('user','lastpost'));
+        $issues = $user->issue()->get();
+
+        //dd($issues);
+        return view('Users.show',compact('user','lastpost','issues'));
     }
 
     /**
