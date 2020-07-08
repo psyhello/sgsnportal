@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use DB;
 use Auth;
+use Storage;
 
 class IssuesController extends Controller
 {
@@ -46,8 +47,16 @@ class IssuesController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = Auth::id();
-        Issue::create($this->validateForm(),$user);
+
+        $issue = Issue::create($this->validateForm(),$user);
+
+        $ext = $request->file('image')->extension();
+
+        if ($request->file('image')) {
+                $request->file('image')->storeAs('public',$issue->id.'.'.$ext);
+            }
 
         return redirect('/issues');
     }
@@ -62,9 +71,16 @@ class IssuesController extends Controller
     {
         $lastpost = Post::latest('id')->first();
 
+
+       
+        
         $issue = Issue::FindOrFail($issue)->first();
 
-        return view('Issues.show',compact('issue','lastpost'));
+        $file = glob($_SERVER['DOCUMENT_ROOT'].'storage/'. $issue->id .'.*');
+
+   
+
+        return view('Issues.show',compact('issue','lastpost','file'));
     }
 
     /**

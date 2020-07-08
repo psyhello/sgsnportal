@@ -13,7 +13,7 @@
 		</div>	
 
 		<div class="container d-none form-opener" id="it">
-				<form method="POST" action="/issues">
+				<form method="POST" action="/issues" enctype="multipart/form-data" >
 					{{ csrf_field() }}
 					<div><label for="type">Выберите тип проблемы</label></br>
 						<select name="type" id="type" onchange="chooseType(it)">
@@ -28,11 +28,12 @@
 						</option>
 						
 					</select>
-					<select name="vid" id="vid">
+
 						
 					</select>
 					</div>
 					<div ><label for="description">Описание заявки</label><textarea class = "form-control"  name="description" id="description"></textarea></div>
+					<div ><label for="image">Скриншот</label><input type="file" name="image"></div>
 					
 					<input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
 					<hr>

@@ -113,9 +113,7 @@
             vidOfType.appendChild( document.createTextNode('азаза') );
           }*/
         }
-        function userInfo(e) {
-          alert('{{$issue->user->name ?? ''}}  ');
-        }
+
 
       </script>
 </body>
